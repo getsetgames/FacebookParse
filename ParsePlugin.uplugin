@@ -1,0 +1,22 @@
+{
+	"FileVersion" : 3,
+	
+	"FriendlyName" : "Parse",
+	"Version" : 1,
+	"VersionName" : "1.0",
+	"CreatedBy" : "Get Set Games Inc.",
+	"CreatedByURL" : "https://github.com/getsetgames/ParsePlugin",
+	"EngineVersion" : "4.7.0",
+	"Description" : "This plugin integrates the Parse SDK and surfaces its functionality to blueprint.",
+	"Category" : "Developer",
+	"EnabledByDefault" : false,
+	"LoadingPhase" : "Default",
+
+	"Modules" :
+	[
+		{
+			"Name" : "ParsePlugin",
+			"Type" : "Runtime"
+		}
+	]
+}
