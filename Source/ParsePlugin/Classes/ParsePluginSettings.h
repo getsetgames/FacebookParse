@@ -1,3 +1,8 @@
+//
+//  Created by Derek van Vliet on 2015-03-25.
+//  Copyright (c) 2015 Get Set Games Inc. All rights reserved.
+//
+
 #pragma once
 
 #include "ParsePluginSettings.generated.h"
@@ -22,8 +27,6 @@ public:
 	UPROPERTY(Config, EditAnywhere, Category=Features, meta=(DisplayName="Crash Reporting"))
 	bool CrashReporting;
 	
-	// iOS
-	
-	UPROPERTY(Config, EditAnywhere, Category="iOS Features", meta=(DisplayName="Track App Opened"))
+	UPROPERTY(Config, EditAnywhere, Category="Features", meta=(DisplayName="Track App Opened"))
 	bool TrackAppOpened;
 };

@@ -1,3 +1,8 @@
+//
+//  Created by Derek van Vliet on 2015-03-25.
+//  Copyright (c) 2015 Get Set Games Inc. All rights reserved.
+//
+
 #include "ParsePluginPrivatePCH.h"
 #include "ParsePluginSettings.h"
 #include "ISettingsModule.h"
@@ -24,7 +29,6 @@ void FParsePlugin::StartupModule()
 {
 	const UParsePluginSettings* DefaultSettings = GetDefault<UParsePluginSettings>();
 	
-	// initialize iOS
 #if PLATFORM_IOS
 	if (!DefaultSettings->ApplicationId.IsEmpty() && !DefaultSettings->ClientKey.IsEmpty())
 	{
@@ -48,7 +52,7 @@ void FParsePlugin::StartupModule()
 		}
 	}
 #endif
-	
+		
 	// register settings
 	if (ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings"))
 	{
