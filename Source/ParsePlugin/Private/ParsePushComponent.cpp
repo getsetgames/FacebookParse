@@ -29,6 +29,7 @@ void UParsePushComponent::OnUnregister()
 	
 	FCoreDelegates::ApplicationRegisteredForRemoteNotificationsDelegate.RemoveAll(this);
 	FCoreDelegates::ApplicationFailedToRegisterForRemoteNotificationsDelegate.RemoveAll(this);
+	FCoreDelegates::ApplicationReceivedRemoteNotificationDelegate.RemoveAll(this);
 }
 
 void UParsePushComponent::ApplicationRegisteredForRemoteNotifications_Handler(TArray<uint8> Token)
