@@ -18,5 +18,6 @@ public:
 	
 private:
 	void ApplicationRegisteredForRemoteNotifications_Handler(TArray<uint8> Token);
-	void ApplicationFailedToRegisterForRemoteNotifications_Handler();
+	void ApplicationFailedToRegisterForRemoteNotifications_Handler(FString RegisterError);
+	void ApplicationReceivedRemoteNotification_Handler(FString Json);
 };

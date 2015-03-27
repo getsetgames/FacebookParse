@@ -18,6 +18,7 @@ void UParsePushComponent::OnRegister()
 	
 	FCoreDelegates::ApplicationRegisteredForRemoteNotificationsDelegate.AddUObject(this, &UParsePushComponent::ApplicationRegisteredForRemoteNotifications_Handler);
 	FCoreDelegates::ApplicationFailedToRegisterForRemoteNotificationsDelegate.AddUObject(this, &UParsePushComponent::ApplicationFailedToRegisterForRemoteNotifications_Handler);
+	FCoreDelegates::ApplicationReceivedRemoteNotificationDelegate.AddUObject(this, &UParsePushComponent::ApplicationReceivedRemoteNotification_Handler);
 }
 
 void UParsePushComponent::OnUnregister()
@@ -40,7 +41,12 @@ void UParsePushComponent::ApplicationRegisteredForRemoteNotifications_Handler(TA
 #endif
 }
 
-void UParsePushComponent::ApplicationFailedToRegisterForRemoteNotifications_Handler()
+void UParsePushComponent::ApplicationFailedToRegisterForRemoteNotifications_Handler(FString RegisterError)
 {
-	
+	UE_LOG(LogParsePlugin, Error, TEXT("ApplicationFailedToRegisterForRemoteNotifications: %s"), *RegisterError);
+}
+
+void UParsePushComponent::ApplicationReceivedRemoteNotification_Handler(FString Json)
+{
+	UE_LOG(LogParsePlugin, Log, TEXT("ApplicationReceivedRemoteNotification: %s"), *Json);
 }
