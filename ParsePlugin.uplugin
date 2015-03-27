@@ -7,7 +7,7 @@
 	"CreatedBy" : "Get Set Games Inc.",
 	"CreatedByURL" : "https://github.com/getsetgames/ParsePlugin",
 	"EngineVersion" : "4.7.0",
-	"Description" : "This plugin integrates the Parse SDK and surfaces its functionality to blueprint.",
+	"Description" : "This plugin integrates the Parse SDK.",
 	"Category" : "Developer",
 	"EnabledByDefault" : false,
 	"LoadingPhase" : "Default",
