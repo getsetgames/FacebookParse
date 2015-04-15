@@ -105,8 +105,8 @@ namespace UnrealBuildTool.Rules
 					}
 				);
 				
-				AddThirdPartyPrivateStaticDependencies(Target, "libsqlite3");
-				AddThirdPartyPrivateStaticDependencies(Target, "zlib");
+				PublicAdditionalLibraries.Add("sqlite3");
+				PublicAdditionalLibraries.Add("z");
 			}
 		}
 	}
