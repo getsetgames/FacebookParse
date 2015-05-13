@@ -55,8 +55,20 @@ namespace UnrealBuildTool.Rules
 			if (Target.Platform == UnrealTargetPlatform.IOS) {
 				PublicAdditionalFrameworks.Add( 
 					new UEBuildFramework( 
-						"Bolts",
-						"../../lib/iOS/Bolts.embeddedframework.zip"
+						"FacebookSDK",
+						"../../lib/iOS/FacebookSDK.embeddedframework.zip"
+					)
+				); 
+				PublicAdditionalFrameworks.Add( 
+					new UEBuildFramework( 
+						"FBSDKCoreKit",
+						"../../lib/iOS/FBSDKCoreKit.embeddedframework.zip"
+					)
+				); 
+				PublicAdditionalFrameworks.Add( 
+					new UEBuildFramework( 
+						"FBSDKLoginKit",
+						"../../lib/iOS/FBSDKLoginKit.embeddedframework.zip"
 					)
 				); 
 				PublicAdditionalFrameworks.Add( 
@@ -73,18 +85,6 @@ namespace UnrealBuildTool.Rules
 				); 
 				PublicAdditionalFrameworks.Add( 
 					new UEBuildFramework( 
-						"ParseFacebookUtils",
-						"../../lib/iOS/ParseFacebookUtils.embeddedframework.zip"
-					)
-				); 
-				PublicAdditionalFrameworks.Add( 
-					new UEBuildFramework( 
-						"ParseFacebookUtilsV4",
-						"../../lib/iOS/ParseFacebookUtilsV4.embeddedframework.zip"
-					)
-				); 
-				PublicAdditionalFrameworks.Add( 
-					new UEBuildFramework( 
 						"ParseUI",
 						"../../lib/iOS/ParseUI.embeddedframework.zip"
 					)
@@ -93,12 +93,14 @@ namespace UnrealBuildTool.Rules
 				PublicFrameworks.AddRange( 
 					new string[] 
 					{ 
+						"Accounts",
 						"AudioToolbox",
 						"CFNetwork",
 						"CoreGraphics",
 						"CoreLocation",
 						"MobileCoreServices",
 						"QuartzCore",
+						"Social",
 						"Security",
 						"StoreKit",
 						"SystemConfiguration"							
