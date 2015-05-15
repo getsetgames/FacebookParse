@@ -7,12 +7,6 @@
 #include "FacebookParseSettings.h"
 #include "ISettingsModule.h"
 
-#if PLATFORM_IOS
-#import "IOSAppDelegate.h"
-#import <Parse/Parse.h>
-#import <ParseCrashReporting/ParseCrashReporting.h>
-#endif
-
 DEFINE_LOG_CATEGORY(LogFacebookParse);
 
 #define LOCTEXT_NAMESPACE "FacebookParse"
@@ -26,39 +20,13 @@ class FFacebookParse : public IFacebookParse
 IMPLEMENT_MODULE( FFacebookParse, FacebookParse )
 
 void FFacebookParse::StartupModule()
-{
-	const UFacebookParseSettings* DefaultSettings = GetDefault<UFacebookParseSettings>();
-	
-#if PLATFORM_IOS
-	if (!DefaultSettings->ApplicationId.IsEmpty() && !DefaultSettings->ClientKey.IsEmpty())
-	{
-		if (DefaultSettings->CrashReporting)
-		{
-			[ParseCrashReporting enable];
-		}
-		
-		if (DefaultSettings->EnableLocalDatastore)
-		{
-			[Parse enableLocalDatastore];
-		}
-		
-		[Parse setApplicationId:DefaultSettings->ApplicationId.GetNSString()
-					  clientKey:DefaultSettings->ClientKey.GetNSString()];
-		
-		if (DefaultSettings->TrackAppOpened)
-		{
-			IOSAppDelegate* appDelegate = (IOSAppDelegate*)[[UIApplication sharedApplication] delegate];
-			[PFAnalytics trackAppOpenedWithLaunchOptions:appDelegate.launchOptions];
-		}
-	}
-#endif
-		
+{		
 	// register settings
 	if (ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings"))
 	{
-		SettingsModule->RegisterSettings("Project", "Plugins", "Parse",
-										 LOCTEXT("RuntimeSettingsName", "Parse"),
-										 LOCTEXT("RuntimeSettingsDescription", "Configure the Parse plugin"),
+		SettingsModule->RegisterSettings("Project", "Plugins", "FacebookParse",
+										 LOCTEXT("RuntimeSettingsName", "FacebookParse"),
+										 LOCTEXT("RuntimeSettingsDescription", "Configure the FacebookParse plugin"),
 										 GetMutableDefault<UFacebookParseSettings>()
 										 );
 	}
