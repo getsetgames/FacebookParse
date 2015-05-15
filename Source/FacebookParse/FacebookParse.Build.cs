@@ -45,54 +45,60 @@ namespace UnrealBuildTool.Rules
 					// ... add any modules that your module loads dynamically here ...
 				}
 				);
-				
+
 			PrivateIncludePathModuleNames.AddRange(
 			new string[] {
 				"Settings"
 			}
 			);
-			
+
 			if (Target.Platform == UnrealTargetPlatform.IOS) {
-				PublicAdditionalFrameworks.Add( 
-					new UEBuildFramework( 
+				PublicAdditionalFrameworks.Add(
+					new UEBuildFramework(
 						"FacebookSDK",
 						"../../lib/iOS/FacebookSDK.embeddedframework.zip"
 					)
-				); 
-				PublicAdditionalFrameworks.Add( 
-					new UEBuildFramework( 
+				);
+				PublicAdditionalFrameworks.Add(
+					new UEBuildFramework(
 						"FBSDKCoreKit",
 						"../../lib/iOS/FBSDKCoreKit.embeddedframework.zip"
 					)
-				); 
-				PublicAdditionalFrameworks.Add( 
-					new UEBuildFramework( 
+				);
+				PublicAdditionalFrameworks.Add(
+					new UEBuildFramework(
 						"FBSDKLoginKit",
 						"../../lib/iOS/FBSDKLoginKit.embeddedframework.zip"
 					)
+				);
+				PublicAdditionalFrameworks.Add(
+					new UEBuildFramework(
+						"FBSDKShareKit",
+						"../../lib/iOS/FBSDKShareKit.embeddedframework.zip"
+					)
 				); 
-				PublicAdditionalFrameworks.Add( 
-					new UEBuildFramework( 
+				PublicAdditionalFrameworks.Add(
+					new UEBuildFramework(
 						"Parse",
 						"../../lib/iOS/Parse.embeddedframework.zip"
 					)
-				); 
-				PublicAdditionalFrameworks.Add( 
-					new UEBuildFramework( 
+				);
+				PublicAdditionalFrameworks.Add(
+					new UEBuildFramework(
 						"ParseCrashReporting",
 						"../../lib/iOS/ParseCrashReporting.embeddedframework.zip"
 					)
-				); 
-				PublicAdditionalFrameworks.Add( 
-					new UEBuildFramework( 
+				);
+				PublicAdditionalFrameworks.Add(
+					new UEBuildFramework(
 						"ParseUI",
 						"../../lib/iOS/ParseUI.embeddedframework.zip"
 					)
-				); 
+				);
 
-				PublicFrameworks.AddRange( 
-					new string[] 
-					{ 
+				PublicFrameworks.AddRange(
+					new string[]
+					{
 						"Accounts",
 						"AudioToolbox",
 						"CFNetwork",
@@ -103,10 +109,10 @@ namespace UnrealBuildTool.Rules
 						"Social",
 						"Security",
 						"StoreKit",
-						"SystemConfiguration"							
+						"SystemConfiguration"
 					}
 				);
-				
+
 				PublicAdditionalLibraries.Add("sqlite3");
 				PublicAdditionalLibraries.Add("z");
 			}
