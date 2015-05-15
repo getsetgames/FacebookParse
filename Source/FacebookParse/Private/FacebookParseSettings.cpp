@@ -3,10 +3,10 @@
 //  Copyright (c) 2015 Get Set Games Inc. All rights reserved.
 //
 
-#include "ParsePluginPrivatePCH.h"
-#include "ParsePluginSettings.h"
+#include "FacebookParsePrivatePCH.h"
+#include "FacebookParseSettings.h"
 
-UParsePluginSettings::UParsePluginSettings(const FObjectInitializer& ObjectInitializer)
+UFacebookParseSettings::UFacebookParseSettings(const FObjectInitializer& ObjectInitializer)
 : Super(ObjectInitializer)
 , EnableLocalDatastore(false)
 , CrashReporting(false)

@@ -5,9 +5,9 @@
 
 namespace UnrealBuildTool.Rules
 {
-	public class ParsePlugin : ModuleRules
+	public class FacebookParse : ModuleRules
 	{
-		public ParsePlugin(TargetInfo Target)
+		public FacebookParse(TargetInfo Target)
 		{
 			PublicIncludePaths.AddRange(
 				new string[] {

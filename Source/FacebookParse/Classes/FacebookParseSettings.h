@@ -5,15 +5,15 @@
 
 #pragma once
 
-#include "ParsePluginSettings.generated.h"
+#include "FacebookParseSettings.generated.h"
 
 UCLASS(config = Engine, defaultconfig)
-class UParsePluginSettings : public UObject
+class UFacebookParseSettings : public UObject
 {
 	GENERATED_BODY()
 	
 public:
-	UParsePluginSettings(const FObjectInitializer& ObjectInitializer);
+	UFacebookParseSettings(const FObjectInitializer& ObjectInitializer);
 	
 	UPROPERTY(Config, EditAnywhere, Category=Ids, meta=(DisplayName="Application ID"))
 	FString ApplicationId;

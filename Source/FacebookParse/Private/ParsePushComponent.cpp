@@ -3,7 +3,7 @@
 //  Copyright (c) 2015 Get Set Games Inc. All rights reserved.
 //
 
-#include "ParsePluginPrivatePCH.h"
+#include "FacebookParsePrivatePCH.h"
 #include "CallbackDevice.h"
 
 #if PLATFORM_IOS
@@ -44,10 +44,10 @@ void UParsePushComponent::ApplicationRegisteredForRemoteNotifications_Handler(TA
 
 void UParsePushComponent::ApplicationFailedToRegisterForRemoteNotifications_Handler(FString RegisterError)
 {
-	UE_LOG(LogParsePlugin, Error, TEXT("ApplicationFailedToRegisterForRemoteNotifications: %s"), *RegisterError);
+	UE_LOG(LogFacebookParse, Error, TEXT("ApplicationFailedToRegisterForRemoteNotifications: %s"), *RegisterError);
 }
 
 void UParsePushComponent::ApplicationReceivedRemoteNotification_Handler(FString Json)
 {
-	UE_LOG(LogParsePlugin, Log, TEXT("ApplicationReceivedRemoteNotification: %s"), *Json);
+	UE_LOG(LogFacebookParse, Log, TEXT("ApplicationReceivedRemoteNotification: %s"), *Json);
 }

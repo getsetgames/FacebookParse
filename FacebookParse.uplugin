@@ -5,7 +5,7 @@
 	"Version" : 1,
 	"VersionName" : "1.0",
 	"CreatedBy" : "Get Set Games Inc.",
-	"CreatedByURL" : "https://github.com/getsetgames/ParsePlugin",
+	"CreatedByURL" : "https://github.com/getsetgames/FacebookParse",
 	"EngineVersion" : "4.7.0",
 	"Description" : "This plugin integrates the Parse SDK.",
 	"Category" : "Developer",
@@ -15,7 +15,7 @@
 	"Modules" :
 	[
 		{
-			"Name" : "ParsePlugin",
+			"Name" : "FacebookParse",
 			"Type" : "Runtime"
 		}
 	]

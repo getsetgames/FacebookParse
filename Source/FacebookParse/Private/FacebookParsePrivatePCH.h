@@ -8,7 +8,7 @@
 #include "CoreUObject.h"
 #include "Engine.h"
 
-#include "IParsePlugin.h"
+#include "IFacebookParse.h"
 
 // You should place include statements to your module's private header files here.  You only need to
 // add includes for headers that are used in most of your module's source files though.
@@ -18,6 +18,6 @@
 extern NSString *const BFTaskMultipleExceptionsException = @"BFMultipleExceptionsException";
 #endif
 
-DECLARE_LOG_CATEGORY_EXTERN(LogParsePlugin, Log, All);
+DECLARE_LOG_CATEGORY_EXTERN(LogFacebookParse, Log, All);
 
-#include "ParsePluginClasses.h"
+#include "FacebookParseClasses.h"

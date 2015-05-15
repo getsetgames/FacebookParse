@@ -3,8 +3,8 @@
 //  Copyright (c) 2015 Get Set Games Inc. All rights reserved.
 //
 
-#include "ParsePluginPrivatePCH.h"
-#include "ParsePluginSettings.h"
+#include "FacebookParsePrivatePCH.h"
+#include "FacebookParseSettings.h"
 #include "ISettingsModule.h"
 
 #if PLATFORM_IOS
@@ -13,21 +13,21 @@
 #import <ParseCrashReporting/ParseCrashReporting.h>
 #endif
 
-DEFINE_LOG_CATEGORY(LogParsePlugin);
+DEFINE_LOG_CATEGORY(LogFacebookParse);
 
-#define LOCTEXT_NAMESPACE "ParsePlugin"
+#define LOCTEXT_NAMESPACE "FacebookParse"
 
-class FParsePlugin : public IParsePlugin
+class FFacebookParse : public IFacebookParse
 {
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
 };
 
-IMPLEMENT_MODULE( FParsePlugin, ParsePlugin )
+IMPLEMENT_MODULE( FFacebookParse, FacebookParse )
 
-void FParsePlugin::StartupModule()
+void FFacebookParse::StartupModule()
 {
-	const UParsePluginSettings* DefaultSettings = GetDefault<UParsePluginSettings>();
+	const UFacebookParseSettings* DefaultSettings = GetDefault<UFacebookParseSettings>();
 	
 #if PLATFORM_IOS
 	if (!DefaultSettings->ApplicationId.IsEmpty() && !DefaultSettings->ClientKey.IsEmpty())
@@ -59,13 +59,13 @@ void FParsePlugin::StartupModule()
 		SettingsModule->RegisterSettings("Project", "Plugins", "Parse",
 										 LOCTEXT("RuntimeSettingsName", "Parse"),
 										 LOCTEXT("RuntimeSettingsDescription", "Configure the Parse plugin"),
-										 GetMutableDefault<UParsePluginSettings>()
+										 GetMutableDefault<UFacebookParseSettings>()
 										 );
 	}
 }
 
 
-void FParsePlugin::ShutdownModule()
+void FFacebookParse::ShutdownModule()
 {
 }
 
