@@ -20,7 +20,24 @@ class FFacebookParse : public IFacebookParse
 IMPLEMENT_MODULE( FFacebookParse, FacebookParse )
 
 void FFacebookParse::StartupModule()
-{		
+{
+	const UFacebookParseSettings* DefaultSettings = GetDefault<UFacebookParseSettings>();
+	
+#if PLATFORM_IOS
+	[FBSDKAppEvents activateApp];
+	
+	IOSAppDelegate* appDelegate = (IOSAppDelegate*)[[UIApplication sharedApplication] delegate];
+	[[FBSDKApplicationDelegate sharedInstance] application:[UIApplication sharedApplication] didFinishLaunchingWithOptions:appDelegate.launchOptions];
+	
+	if (appDelegate.launchURL)
+	{
+		[[FBSDKApplicationDelegate sharedInstance] application:[UIApplication sharedApplication]
+													   openURL:appDelegate.launchURL
+											 sourceApplication:appDelegate.launchSourceApplication
+													annotation:appDelegate.launchAnnotation];
+	}
+#endif
+
 	// register settings
 	if (ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings"))
 	{

@@ -17,6 +17,7 @@
 #import "IOSAppDelegate.h"
 #import <Parse/Parse.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 // HACK: fix for this problem: http://stackoverflow.com/questions/28898999/parse-api-1-6-4-cannot-build-project
 extern NSString *const BFTaskMultipleExceptionsException = @"BFMultipleExceptionsException";
