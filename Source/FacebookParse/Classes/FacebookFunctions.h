@@ -12,9 +12,12 @@ class UFacebookFunctions : public UObject {
 	GENERATED_BODY()
 	
 public:
-	UFUNCTION(BlueprintCallable, meta = (Keywords = "facebook"), Category = "Facebook")
-	static void FacebookActivateApp();
-
-	UFUNCTION(BlueprintCallable, meta = (Keywords = "facebook"), Category = "Facebook")
-	static void FacebookApplicationOpenURL(FString URL, FString SourceApplication);
+	UFUNCTION(BlueprintPure, meta = (Keywords = "facebook"), Category = "Facebook")
+	static FString FacebookGetAccessToken();
+	
+	UFUNCTION(BlueprintPure, meta = (Keywords = "facebook"), Category = "Facebook")
+	static FString FacebookGetAccessTokenExpirationDate();
+	
+	UFUNCTION(BlueprintPure, meta = (Keywords = "facebook"), Category = "Facebook")
+	static FString FacebookGetUserId();
 };

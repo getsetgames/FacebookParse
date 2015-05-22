@@ -5,21 +5,49 @@
 
 #include "FacebookParsePrivatePCH.h"
 
-void UFacebookFunctions::FacebookActivateApp()
+FString UFacebookFunctions::FacebookGetAccessToken()
 {
+	FString Result;
+	
 #if PLATFORM_IOS
-	[FBSDKAppEvents activateApp];
+	if ([FBSDKAccessToken currentAccessToken])
+	{
+		Result = FString([FBSDKAccessToken currentAccessToken].tokenString);
+	}
 #endif
+	
+	return Result;
 }
 
-void UFacebookFunctions::FacebookApplicationOpenURL(FString URL, FString SourceApplication)
+FString UFacebookFunctions::FacebookGetAccessTokenExpirationDate()
 {
-#if PLATFORM_IOS
-	IOSAppDelegate* appDelegate = (IOSAppDelegate*)[[UIApplication sharedApplication] delegate];
+	FString Result;
 	
-	[[FBSDKApplicationDelegate sharedInstance] application:[UIApplication sharedApplication]
-												   openURL:[NSURL URLWithString:URL.GetNSString()]
-										 sourceApplication:SourceApplication.GetNSString()
-												annotation:appDelegate.launchAnnotation];
+#if PLATFORM_IOS
+	if ([FBSDKAccessToken currentAccessToken])
+	{
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+		[dateFormatter setLocale:enUSPOSIXLocale];
+		[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+		
+		Result = FString([dateFormatter stringFromDate:[FBSDKAccessToken currentAccessToken].expirationDate]);
+	}
 #endif
+	
+	return Result;
+}
+
+FString UFacebookFunctions::FacebookGetUserId()
+{
+	FString Result;
+	
+#if PLATFORM_IOS
+	if ([FBSDKAccessToken currentAccessToken])
+	{
+		Result = FString([FBSDKAccessToken currentAccessToken].userID);
+	}
+#endif
+	
+	return Result;
 }

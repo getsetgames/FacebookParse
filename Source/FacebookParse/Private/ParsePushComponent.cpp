@@ -6,10 +6,6 @@
 #include "FacebookParsePrivatePCH.h"
 #include "CallbackDevice.h"
 
-#if PLATFORM_IOS
-#import <Parse/Parse.h>
-#endif
-
 void UParsePushComponent::OnRegister()
 {
 	Super::OnRegister();
