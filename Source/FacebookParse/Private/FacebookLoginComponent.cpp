@@ -47,7 +47,7 @@ void UFacebookLoginComponent::OnUnregister()
 void UFacebookLoginComponent::FacebookLoginWithReadPermissions(TArray<FString> Permissions)
 {
 #if PLATFORM_IOS
-	dispatch_sync(dispatch_get_main_queue(), ^{
+	dispatch_async(dispatch_get_main_queue(), ^{
 		FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
 		[login logInWithReadPermissions:GetNSStringArray(Permissions) handler:^(FBSDKLoginManagerLoginResult *result, NSError *error)
 		 {
