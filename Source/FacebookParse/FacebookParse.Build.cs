@@ -89,12 +89,13 @@ namespace UnrealBuildTool.Rules
 						"../../lib/iOS/ParseCrashReporting.embeddedframework.zip"
 					)
 				);
-				PublicAdditionalFrameworks.Add(
-					new UEBuildFramework(
-						"ParseUI",
-						"../../lib/iOS/ParseUI.embeddedframework.zip"
-					)
-				);
+				
+				// PublicAdditionalFrameworks.Add(
+				// 	new UEBuildFramework(
+				// 		"ParseUI",
+				// 		"../../lib/iOS/ParseUI.embeddedframework.zip"
+				// 	)
+				// );
 
 				PublicFrameworks.AddRange(
 					new string[]
