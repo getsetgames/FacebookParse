@@ -116,6 +116,7 @@ namespace UnrealBuildTool.Rules
 
 				PublicAdditionalLibraries.Add("sqlite3");
 				PublicAdditionalLibraries.Add("z");
+                PublicAdditionalLibraries.Add("stdc++.6");
 			}
 		}
 	}
