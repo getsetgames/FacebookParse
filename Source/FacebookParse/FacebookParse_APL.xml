@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- init section is always evaluated once per architecture -->
+	<init>
+		<log text="FacebookParse init"/>
+
+		<setStringFromProperty result="sFacebookAppId" ini="Engine" section="/Script/Facebook.FacebookSettings" property="FacebookAppId" default=""/>
+	</init>
+
+	<!-- optional updates applied to AndroidManifest.xml -->
+	<androidManifestUpdates>
+		<addPermission android:name="android.permission.INTERNET"/>
+
+		<setElement    result="fb-app-id-meta-data" value="meta-data"/>
+	    <addAttribute  tag="$fb-app-id-meta-data" name="android:name"  value="com.facebook.sdk.ApplicationId"/>
+	    <addAttribute  tag="$fb-app-id-meta-data" name="android:value" value="@string/$S(sFacebookAppId)"/>
+    	<addElement    tag="application"                name="fb-app-id-meta-data"/>
+
+
+    	<setElement   result="fb-activity" value="activity">
+    	<addAttribute tag="$fb-activity" name="android:name" value="com.facebook.FacebookActivity"/>
+    	<addAttribute tag="$fb-activity" name="android:configChanges" value="keyboard|keyboardHidden|screenLayout|screenSize|orientation"/>
+		<addAttribute tag="$fb-activity" name="android:theme" value="@android:style/Theme.Translucent.NoTitleBar"/>
+		<addAttribute tag="$fb-activity" name="android:label" value="@string/app_name"/>
+		<addElement   tag="application"  name="fb-activity"/>
+
+		<!-- 
+			If you're sharing links, images or video via the Facebook for Android app, you also need to declare the FacebookContentProvider in the manifest.  Append your app id to the end of the authorities value.  
+		-->
+		<setElement   result="fb-provider" value="provider"/>
+		<addAttribute tag="$fb-provider" name="android:authorities" value="com.facebook.app.FacebookContentProviderS$(sFacebookAppId)"/>
+		<addAttribute tag="$fb-provider" name="android:name" value="com.facebook.FacebookContentProvider"/>
+		<addAttribute tag="$fb-provider" name="android:exported" value="true"/>
+		<addElement   tag="application"  name="fb-provider"/>
+
+	</androidManifestUpdates> 
+
+	<!-- optional additions to proguard -->
+	<proguardAdditions>
+		<insert>
+
+		</insert>
+	</proguardAdditions>
+	
+	<!-- optional files or directories to copy to Intermediate/Android/APK -->
+ 	<resourceCopies>
+		<copyDir src="$S(EngineDir)/Plugins/GSG/AdobeMobile/lib/Android" dst="$S(BuildDir)/libs" />
+	</resourceCopies>
+
+	<!-- optional additions to the GameActivity imports in GameActivity.java -->
+	<gameActivityImportAdditions>
+		<insert>
+import com.facebook.FacebookSdk;
+		</insert>
+	</gameActivityImportAdditions>
+	
+
+	<!-- optional additions to the GameActivity class in GameActivity.java -->
+	<gameActivityClassAdditions>
+		<insert>
+
+		</insert>
+	</gameActivityClassAdditions>
+	
+	<!-- optional additions to GameActivity onCreate metadata reading in GameActivity.java -->
+	<gameActivityReadMetadataAdditions>
+
+	</gameActivityReadMetadataAdditions>
+	
+	<!-- optional additions to GameActivity onCreate in GameActivity.java -->
+	<gameActivityOnCreateAdditions>
+FacebookSdk.sdkInitialize(getApplicationContext());
+	</gameActivityOnCreateAdditions>
+
+	<!-- optional additions to GameActivity onDestroy in GameActivity.java -->
+	<gameActivityOnDestroyAdditions>
+		<insert>
+		
+		</insert>
+	</gameActivityOnDestroyAdditions>
+	
+	
+	<!-- optional additions to GameActivity onStart in GameActivity.java -->
+	<gameActivityOnStartAdditions>
+		<insert>
+		
+		</insert>
+	</gameActivityOnStartAdditions>
+
+	<!-- optional additions to GameActivity onStop in GameActivity.java -->
+	<gameActivityOnStopAdditions>
+		<insert>
+
+		</insert>
+	</gameActivityOnStopAdditions>
+	
+
+	<!-- optional additions to GameActivity onPause in GameActivity.java	-->
+	<gameActivityOnPauseAdditions>
+		<insert>
+
+		</insert>
+	</gameActivityOnPauseAdditions>
+
+
+	<!-- optional additions to GameActivity onResume in GameActivity.java	-->
+	<gameActivityOnResumeAdditions>
+		<insert>
+
+		</insert>
+	</gameActivityOnResumeAdditions>
+
+
+	<!-- optional additions to GameActivity onActivityResult in GameActivity.java -->
+	<gameActivityOnActivityResultAdditions><![CDATA[
+
+
+
+	]]></gameActivityOnActivityResultAdditions>
+	
+	<!-- optional libraries to load in GameActivity.java before libUE4.so -->
+	<soLoadLibrary>
+
+	</soLoadLibrary>
+</root>
