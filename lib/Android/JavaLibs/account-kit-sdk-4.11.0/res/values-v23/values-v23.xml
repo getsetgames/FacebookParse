@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/chrisp/src/android-sdk-release/accountkit/accountkitsdk/src/main/res/values-v23/styles.xml -->
+    <eat-comment/>
+    <style name="AccountKit.AgreementText" parent="Base.AccountKit.AgreementText">
+        <item name="android:breakStrategy">simple</item>
+    </style>
+    <style name="AccountKit.InputText" parent="Base.AccountKit.InputText">
+        <item name="android:breakStrategy">simple</item>
+    </style>
+    <style name="AccountKit.Text" parent="Base.AccountKit.Text">
+        <item name="android:breakStrategy">simple</item>
+    </style>
+    <style name="AccountKit.TitleText" parent="Base.AccountKit.TitleText">
+        <item name="android:breakStrategy">simple</item>
+    </style>
+</resources>

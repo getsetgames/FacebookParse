@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/chrisp/src/android-sdk-release/accountkit/accountkitsdk/src/main/res/values-v17/styles.xml -->
+    <eat-comment/>
+    <style name="AccountKit.Container" parent="Base.AccountKit.Container">
+        <item name="android:layout_marginEnd">?attr/com_accountkit_content_margin_end</item>
+        <item name="android:layout_marginStart">?attr/com_accountkit_content_margin_start</item>
+    </style>
+</resources>
