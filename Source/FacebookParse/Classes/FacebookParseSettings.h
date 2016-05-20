@@ -23,4 +23,7 @@ public:
 	
 	UPROPERTY(Config, EditAnywhere, Category=Parse, meta=(DisplayName="Track App Opened"))
 	bool TrackAppOpened;
+    
+    UPROPERTY(Config, EditAnywhere, Category=Parse, meta=(DisplayName="App ID"))
+    FString AppID;
 };
