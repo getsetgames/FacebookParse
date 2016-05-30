@@ -3,6 +3,8 @@
 //  Copyright (c) 2015 Get Set Games Inc. All rights reserved.
 //
 
+using System.IO;
+
 namespace UnrealBuildTool.Rules
 {
 	public class FacebookParse : ModuleRules
@@ -117,6 +119,11 @@ namespace UnrealBuildTool.Rules
 				PublicAdditionalLibraries.Add("sqlite3");
 				PublicAdditionalLibraries.Add("z");
                 PublicAdditionalLibraries.Add("stdc++.6");
+			}
+			else if(Target.Platform == UnrealTargetPlatform.Android)
+			{
+				string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, BuildConfiguration.RelativeEnginePath);
+				AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "FacebookParse_APL.xml")));
 			}
 		}
 	}
