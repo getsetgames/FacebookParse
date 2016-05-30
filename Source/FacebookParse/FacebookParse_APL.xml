@@ -70,7 +70,9 @@ import com.facebook.FacebookSdk;
 	
 	<!-- optional additions to GameActivity onCreate in GameActivity.java -->
 	<gameActivityOnCreateAdditions>
+<insert>
 FacebookSdk.sdkInitialize(getApplicationContext());
+</insert>
 	</gameActivityOnCreateAdditions>
 
 	<!-- optional additions to GameActivity onDestroy in GameActivity.java -->
