@@ -14,7 +14,7 @@
 
 		<setElement    result="fb-app-id-meta-data" value="meta-data"/>
 	    <addAttribute  tag="$fb-app-id-meta-data" name="android:name"  value="com.facebook.sdk.ApplicationId"/>
-	    <addAttribute  tag="$fb-app-id-meta-data" name="android:value" value="@string/$S(sFacebookAppId)"/>
+	    <addAttribute  tag="$fb-app-id-meta-data" name="android:value" value="$S(sFacebookAppId)"/>
     	<addElement    tag="application"                name="fb-app-id-meta-data"/>
 
 
