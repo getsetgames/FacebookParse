@@ -18,7 +18,7 @@
     	<addElement    tag="application"                name="fb-app-id-meta-data"/>
 
 
-    	<setElement   result="fb-activity" value="activity">
+    	<setElement   result="fb-activity" value="activity"/>
     	<addAttribute tag="$fb-activity" name="android:name" value="com.facebook.FacebookActivity"/>
     	<addAttribute tag="$fb-activity" name="android:configChanges" value="keyboard|keyboardHidden|screenLayout|screenSize|orientation"/>
 		<addAttribute tag="$fb-activity" name="android:theme" value="@android:style/Theme.Translucent.NoTitleBar"/>
