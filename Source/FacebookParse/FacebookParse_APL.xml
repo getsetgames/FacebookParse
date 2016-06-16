@@ -45,7 +45,7 @@
 	
 	<!-- optional files or directories to copy to Intermediate/Android/APK -->
  	<resourceCopies>
-		<copyDir src="$S(EngineDir)/Plugins/GSG/AdobeMobile/lib/Android" dst="$S(BuildDir)/libs" />
+		<copyDir src="$S(EngineDir)/Plugins/GSG/FacebookParse/lib/Android/JavaLibs" dst="$S(EngineDir)/Build/Android/Java/JavaLibs" />
 	</resourceCopies>
 
 	<!-- optional additions to the GameActivity imports in GameActivity.java -->
