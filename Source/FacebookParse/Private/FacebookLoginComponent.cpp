@@ -65,6 +65,19 @@ void UFacebookLoginComponent::FacebookLoginWithReadPermissions(TArray<FString> P
 			}
 		 }];
 	});
+#elif PLATFORM_ANDROID
+    bool bResult = false;
+    
+    if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
+    {
+        jstring AchievementIdJava = Env->NewStringUTF(TCHAR_TO_UTF8(*AchievementId));
+        static jmethodID Method = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunk_Java_FacebookLoginWithReadPermissions",  "(Ljava/lang/String;)V", false);
+        bResult = FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, Method, Permissions);
+        Env->DeleteLocalRef(AchievementIdJava);
+    }
+    
+    return bResult;
+    
 #endif
 }
 
