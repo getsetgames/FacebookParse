@@ -52,6 +52,8 @@
 	<gameActivityImportAdditions>
 		<insert>
 import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.CallbackManager;
 		</insert>
 	</gameActivityImportAdditions>
 	
