@@ -72,9 +72,38 @@ import com.facebook.CallbackManager;
 	
 	<!-- optional additions to GameActivity onCreate in GameActivity.java -->
 	<gameActivityOnCreateAdditions>
-<insert>
+<insert><![CDATA[
 FacebookSdk.sdkInitialize(getApplicationContext());
-</insert>
+AppEventsLogger.activateApp(this);
+
+callbackManager = CallbackManager.Factory.create();
+
+LoginManager.getInstance().registerCallback(callbackManager,
+	new FacebookCallback<LoginResult>() 
+	{
+	    @Override
+	    public void onSuccess(LoginResult loginResult) {
+	        Log.debug("Successful Facebook login");
+	    }
+
+	    @Override
+	    public void onCancel() {
+	         Log.debug("Cancelled Facebook login");
+	    }
+
+	    @Override
+	    public void onError(FacebookException exception) {
+	         Log.debug("Error on Facebook login"); 
+    }
+});
+
+void AndroidThunk_Java_FacebookLoginWithReadPermissions(string permissions)
+{
+	HashSet<String> p = new HashSet(Arrays.asList(TextUtils.split(permissions, ",")));
+	LoginManager.getInstance().logInWithReadPermissions(this, p);
+}
+
+]]></insert>
 	</gameActivityOnCreateAdditions>
 
 	<!-- optional additions to GameActivity onDestroy in GameActivity.java -->
