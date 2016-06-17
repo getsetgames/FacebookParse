@@ -58,9 +58,9 @@ import com.facebook.FacebookSdk;
 
 	<!-- optional additions to the GameActivity class in GameActivity.java -->
 	<gameActivityClassAdditions>
-		<insert>
-
-		</insert>
+		<insert><![CDATA[
+ CallbackManager callbackManager;
+		]]></insert>
 	</gameActivityClassAdditions>
 	
 	<!-- optional additions to GameActivity onCreate metadata reading in GameActivity.java -->
