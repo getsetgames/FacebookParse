@@ -146,11 +146,14 @@ void AndroidThunk_Java_FacebookLoginWithReadPermissions(string permissions)
 
 
 	<!-- optional additions to GameActivity onActivityResult in GameActivity.java -->
-	<gameActivityOnActivityResultAdditions><![CDATA[
-
-
-
-	]]></gameActivityOnActivityResultAdditions>
+	<gameActivityOnActivityResultAdditions>
+<insert><![CDATA[
+	if (callbackManager != null)
+	{
+		callbackManager.onActivityResult(requestCode, resultCode, data);
+	}
+]]></insert>
+	</gameActivityOnActivityResultAdditions>
 	
 	<!-- optional libraries to load in GameActivity.java before libUE4.so -->
 	<soLoadLibrary>
