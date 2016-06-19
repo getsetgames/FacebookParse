@@ -71,18 +71,25 @@ void UFacebookLoginComponent::FacebookLoginWithReadPermissions(TArray<FString> P
 		 }];
 	});
 #elif PLATFORM_ANDROID
-    bool bResult = false;
-    
     if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
     {
-        jstring AchievementIdJava = Env->NewStringUTF(TCHAR_TO_UTF8(*AchievementId));
-        static jmethodID Method = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunk_Java_FacebookLoginWithReadPermissions",  "(Ljava/lang/String;)V", false);
-        bResult = FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, Method, Permissions);
-        Env->DeleteLocalRef(AchievementIdJava);
+        jobjectArray PermissionsArray = (jobjectArray)Env->NewObjectArray(Permissions.Num(), FJavaWrapper::JavaStringClass, NULL);
+        
+        for (uint32 Param = 0; Param < Permissions.Num(); Param++)
+        {
+            jstring p = Env->NewStringUTF(TCHAR_TO_UTF8(*Permissions[Param]));
+            Env->SetObjectArrayElement(PermissionsArray, Param, p);
+            Env->DeleteLocalRef(p);
+        }
+        
+        static jmethodID Method = FJavaWrapper::FindMethod(Env,
+                                                           FJavaWrapper::GameActivityClassID,
+                                                           "AndroidThunk_Java_FacebookLoginWithReadPermissions",
+                                                           "([Ljava/lang/String;)V",
+                                                           false);
+        FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, Method, PermissionsArray);
+        Env->DeleteLocalRef(PermissionsArray);
     }
-    
-    return bResult;
-    
 #endif
 }
 
