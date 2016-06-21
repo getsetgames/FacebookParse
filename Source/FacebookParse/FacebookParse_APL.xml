@@ -69,7 +69,13 @@ import com.facebook.FacebookException;
 	<!-- optional additions to the GameActivity class in GameActivity.java -->
 	<gameActivityClassAdditions>
 		<insert><![CDATA[
- CallbackManager callbackManager;
+CallbackManager callbackManager;
+
+public void AndroidThunk_Java_FacebookLoginWithReadPermissions(String permissions)
+{
+	HashSet<String> p = new HashSet(Arrays.asList(TextUtils.split(permissions, ",")));
+	LoginManager.getInstance().logInWithReadPermissions(this, p);
+}
 		]]></insert>
 	</gameActivityClassAdditions>
 	
@@ -80,7 +86,7 @@ import com.facebook.FacebookException;
 	
 	<!-- optional additions to GameActivity onCreate in GameActivity.java -->
 	<gameActivityOnCreateAdditions>
-<insert><![CDATA[
+		<insert><![CDATA[
 FacebookSdk.sdkInitialize(getApplicationContext());
 AppEventsLogger.activateApp(this);
 
@@ -101,17 +107,10 @@ LoginManager.getInstance().registerCallback(callbackManager,
 
 	    @Override
 	    public void onError(FacebookException exception) {
-	         Log.debug("Error on Facebook login"); 
-    }
-});
-
-void AndroidThunk_Java_FacebookLoginWithReadPermissions(string permissions)
-{
-	HashSet<String> p = new HashSet(Arrays.asList(TextUtils.split(permissions, ",")));
-	LoginManager.getInstance().logInWithReadPermissions(this, p);
-}
-
-]]></insert>
+			Log.debug("Error on Facebook login");
+		}
+    });
+		]]></insert>
 	</gameActivityOnCreateAdditions>
 
 	<!-- optional additions to GameActivity onDestroy in GameActivity.java -->
@@ -155,16 +154,17 @@ void AndroidThunk_Java_FacebookLoginWithReadPermissions(string permissions)
 
 	<!-- optional additions to GameActivity onActivityResult in GameActivity.java -->
 	<gameActivityOnActivityResultAdditions>
-<insert><![CDATA[
+		<insert><![CDATA[
 	if (callbackManager != null)
 	{
 		callbackManager.onActivityResult(requestCode, resultCode, data);
 	}
-]]></insert>
+		]]></insert>
 	</gameActivityOnActivityResultAdditions>
 	
 	<!-- optional libraries to load in GameActivity.java before libUE4.so -->
 	<soLoadLibrary>
 
 	</soLoadLibrary>
+
 </root>
