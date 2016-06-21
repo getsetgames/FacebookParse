@@ -51,9 +51,17 @@
 	<!-- optional additions to the GameActivity imports in GameActivity.java -->
 	<gameActivityImportAdditions>
 		<insert>
+import java.util.HashSet;
+import java.util.Arrays;
+import android.text.TextUtils;
+
 import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginResult;
 import com.facebook.login.LoginManager;
+import com.facebook.FacebookCallback;
 import com.facebook.CallbackManager;
+import com.facebook.FacebookException;
 		</insert>
 	</gameActivityImportAdditions>
 	
