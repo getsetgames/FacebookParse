@@ -44,9 +44,9 @@
 	</proguardAdditions>
 	
 	<!-- optional files or directories to copy to Intermediate/Android/APK -->
- 	<resourceCopies>
-		<copyDir src="$S(EngineDir)/Plugins/GSG/FacebookParse/lib/Android/JavaLibs" dst="$S(EngineDir)/Build/Android/Java/JavaLibs" />
-	</resourceCopies>
+ 	<prebuildCopies>
+		<copyDir src="$S(EngineDir)/Plugins/GSG/FacebookParse/lib/Android" dst="$S(BuildDir)" />
+	</prebuildCopies>
 
 	<!-- optional additions to the GameActivity imports in GameActivity.java -->
 	<gameActivityImportAdditions>
