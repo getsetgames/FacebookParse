@@ -39,7 +39,6 @@
 	<!-- optional additions to proguard -->
 	<proguardAdditions>
 		<insert>
-
 		</insert>
 	</proguardAdditions>
 	
