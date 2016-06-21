@@ -29,7 +29,7 @@
 			If you're sharing links, images or video via the Facebook for Android app, you also need to declare the FacebookContentProvider in the manifest.  Append your app id to the end of the authorities value.  
 		-->
 		<setElement   result="fb-provider" value="provider"/>
-		<addAttribute tag="$fb-provider" name="android:authorities" value="com.facebook.app.FacebookContentProviderS$(sFacebookAppId)"/>
+		<addAttribute tag="$fb-provider" name="android:authorities" value="com.facebook.app.FacebookContentProvider$S(sFacebookAppId)"/>
 		<addAttribute tag="$fb-provider" name="android:name" value="com.facebook.FacebookContentProvider"/>
 		<addAttribute tag="$fb-provider" name="android:exported" value="true"/>
 		<addElement   tag="application"  name="fb-provider"/>
