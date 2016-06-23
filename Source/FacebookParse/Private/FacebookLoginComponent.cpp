@@ -73,22 +73,29 @@ void UFacebookLoginComponent::FacebookLoginWithReadPermissions(TArray<FString> P
 #elif PLATFORM_ANDROID
     if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
     {
-        jobjectArray PermissionsArray = (jobjectArray)Env->NewObjectArray(Permissions.Num(), FJavaWrapper::JavaStringClass, NULL);
-        
-        for (uint32 Param = 0; Param < Permissions.Num(); Param++)
-        {
-            jstring p = Env->NewStringUTF(TCHAR_TO_UTF8(*Permissions[Param]));
-            Env->SetObjectArrayElement(PermissionsArray, Param, p);
-            Env->DeleteLocalRef(p);
-        }
-        
+		FString p;
+
+		const int32 kNumPermissions = Permissions.Num();
+
+		for (int32 i = 0; i < kNumPermissions; i++)
+		{
+			p += Permissions[i];
+
+			if (i < kNumPermissions - 1)
+			{
+				p += ",";
+			}
+		}
+
+		jstring j = Env->NewStringUTF(TCHAR_TO_UTF8(*p));
+
         static jmethodID Method = FJavaWrapper::FindMethod(Env,
                                                            FJavaWrapper::GameActivityClassID,
                                                            "AndroidThunk_Java_FacebookLoginWithReadPermissions",
-                                                           "([Ljava/lang/String;)V",
+                                                           "(Ljava/lang/String;)V",
                                                            false);
-        FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, Method, PermissionsArray);
-        Env->DeleteLocalRef(PermissionsArray);
+        FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, Method, j);
+		Env->DeleteLocalRef(j);
     }
 #endif
 }
