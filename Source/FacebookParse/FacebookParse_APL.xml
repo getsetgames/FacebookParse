@@ -99,7 +99,7 @@ public void AndroidThunk_Java_FacebookLoginWithReadPermissions(String permission
 	<gameActivityOnCreateAdditions>
 		<insert><![CDATA[
 FacebookSdk.sdkInitialize(getApplicationContext());
-AppEventsLogger.activateApp(this);
+AppEventsLogger.activateApp(getApplication());
 
 callbackManager = CallbackManager.Factory.create();
 
