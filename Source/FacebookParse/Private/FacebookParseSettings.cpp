@@ -11,7 +11,7 @@ UFacebookParseSettings::UFacebookParseSettings(const FObjectInitializer& ObjectI
 , EnableLocalDatastore(false)
 , CrashReporting(false)
 , TrackAppOpened(false)
-, AppID("")
+, FBID("")
 {
 	
 }
