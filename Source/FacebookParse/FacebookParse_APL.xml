@@ -6,6 +6,14 @@
 		<log text="FacebookParse init"/>
 
 		<setStringFromProperty result="sFacebookAppId" ini="Engine" section="/Script/FacebookParse.FacebookParseSettings" property="FBID" default=""/>
+
+		<!-- create string resource file containging Facebook application ID  -->
+		<setStringReplace resultFile="$S(PluginDir)/../../lib/Android/res/values/FacebookAppID.generated.xml" 
+							  result="sFacebookAppIdResourceFile" 
+					      sourceFile="$S(PluginDir)/../../lib/Android/res/values/FacebookAppID.xml"
+					            find="$${fb-id}$$" 
+					            with="$S(sFacebookAppId)" 
+					         default=""/>
 	</init>
 
 	<!-- optional updates applied to AndroidManifest.xml -->
@@ -46,6 +54,11 @@
  	<prebuildCopies>
 		<copyDir src="$S(EngineDir)/Plugins/GSG/FacebookParse/lib/Android" dst="$S(BuildDir)" />
 	</prebuildCopies>
+
+	<resourceCopies>
+		<!-- Copy the generated resource file to be packaged -->
+		<copyFile src="$S(EngineDir)/Plugins/GSG/FacebookParse/lib/Android/res/values/FacebookAppID.generated.xml" dst="$S(BuildDir)/res/values/FacebookAppID.xml" />
+	</resourceCopies>
 
 	<!-- optional additions to the GameActivity imports in GameActivity.java -->
 	<gameActivityImportAdditions>
