@@ -94,8 +94,8 @@ public void AndroidThunk_Java_FacebookLoginWithReadPermissions(String permission
 
 	</gameActivityReadMetadataAdditions>
 	
-	<!-- optional additions to GameActivity onCreate in GameActivity.java -->
 	<gameActivityOnCreateAdditions>
+	<!-- optional additions to GameActivity onCreate in GameActivity.java -->
 		<insert><![CDATA[
 FacebookSdk.sdkInitialize(getApplicationContext());
 AppEventsLogger.activateApp(getApplication());
