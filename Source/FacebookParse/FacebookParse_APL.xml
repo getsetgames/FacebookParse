@@ -22,15 +22,14 @@
 
 		<setElement    result="fb-app-id-meta-data" value="meta-data"/>
 	    <addAttribute  tag="$fb-app-id-meta-data" name="android:name"  value="com.facebook.sdk.ApplicationId"/>
-    	<addElement    tag="application"                name="fb-app-id-meta-data"/>
-
 	    <addAttribute  tag="$fb-app-id-meta-data" name="android:value" value="@string/facebook_app_id"/>
+    	<addElement    tag="application"          name="fb-app-id-meta-data"/>
 
     	<setElement   result="fb-activity" value="activity"/>
-    	<addAttribute tag="$fb-activity" name="android:name" value="com.facebook.FacebookActivity"/>
+    	<addAttribute tag="$fb-activity" name="android:name"          value="com.facebook.FacebookActivity"/>
     	<addAttribute tag="$fb-activity" name="android:configChanges" value="keyboard|keyboardHidden|screenLayout|screenSize|orientation"/>
-		<addAttribute tag="$fb-activity" name="android:theme" value="@android:style/Theme.Translucent.NoTitleBar"/>
-		<addAttribute tag="$fb-activity" name="android:label" value="@string/app_name"/>
+		<addAttribute tag="$fb-activity" name="android:theme"         value="@android:style/Theme.Translucent.NoTitleBar"/>
+		<addAttribute tag="$fb-activity" name="android:label"         value="@string/app_name"/>
 		<addElement   tag="application"  name="fb-activity"/>
 
 		<!-- 
