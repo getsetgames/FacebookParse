@@ -76,7 +76,6 @@ import com.facebook.FacebookException;
 		</insert>
 	</gameActivityImportAdditions>
 	
-
 	<!-- optional additions to the GameActivity class in GameActivity.java -->
 	<gameActivityClassAdditions>
 		<insert><![CDATA[
