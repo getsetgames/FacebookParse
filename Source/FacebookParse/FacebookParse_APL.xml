@@ -5,7 +5,7 @@
 	<init>
 		<log text="FacebookParse init"/>
 
-		<setStringFromProperty result="sFacebookAppId" ini="Engine" section="/Script/Facebook.FacebookSettings" property="FacebookAppId" default=""/>
+		<setStringFromProperty result="sFacebookAppId" ini="Engine" section="/Script/FacebookParse.FacebookParseSettings" property="FBID" default=""/>
 	</init>
 
 	<!-- optional updates applied to AndroidManifest.xml -->
