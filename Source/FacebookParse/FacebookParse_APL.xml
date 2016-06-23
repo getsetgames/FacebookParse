@@ -37,8 +37,8 @@
 		-->
 		<setElement   result="fb-provider" value="provider"/>
 		<addAttribute tag="$fb-provider" name="android:authorities" value="com.facebook.app.FacebookContentProvider$S(sFacebookAppId)"/>
-		<addAttribute tag="$fb-provider" name="android:name" value="com.facebook.FacebookContentProvider"/>
-		<addAttribute tag="$fb-provider" name="android:exported" value="true"/>
+		<addAttribute tag="$fb-provider" name="android:name"        value="com.facebook.FacebookContentProvider"/>
+		<addAttribute tag="$fb-provider" name="android:exported"    value="true"/>
 		<addElement   tag="application"  name="fb-provider"/>
 
 	</androidManifestUpdates> 
