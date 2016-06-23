@@ -1,3 +1,4 @@
 .DS_Store
 Binaries/
 Intermediate/
+lib/Android/res/values/*.generated.xml
