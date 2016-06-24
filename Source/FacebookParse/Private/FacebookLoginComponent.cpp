@@ -19,12 +19,49 @@ NSArray* GetNSStringArray(TArray<FString> FStringArray)
 	
 	return NewArray;
 }
+
 #elif PLATFORM_ANDROID
 
 #include "Android/AndroidJNI.h"
 #include "AndroidApplication.h"
 
 #endif
+
+extern "C" void Java_com_epicgames_ue4_GameActivity_nativeFacebookOnLoginComplete(JNIEnv* jenv, jobject thiz, jboolean bSuccess, jstring token, jstring userId, jstring userName, jstring error)
+{
+	FString Token, UserId, UserName, Error;
+
+	const char* charsToken = jenv->GetStringUTFChars(token, 0);
+	Token = FString(UTF8_TO_TCHAR(charsToken));
+	jenv->ReleaseStringUTFChars(token, charsToken);
+
+	const char* charsUserId = jenv->GetStringUTFChars(userId, 0);
+	UserId = FString(UTF8_TO_TCHAR(charsUserId));
+	jenv->ReleaseStringUTFChars(userId, charsUserId);
+
+	const char* charsUserName = jenv->GetStringUTFChars(userName, 0);
+	UserName = FString(UTF8_TO_TCHAR(charsUserName));
+	jenv->ReleaseStringUTFChars(userName, charsUserName);
+
+	const char* charsError = jenv->GetStringUTFChars(error, 0);
+	Error = FString(UTF8_TO_TCHAR(charsError));
+	jenv->ReleaseStringUTFChars(error, charsError);
+
+	if (!Error.IsEmpty())
+	{
+		UFacebookLoginComponent::FacebookLoginErrorDelegate.Broadcast(Error);
+	}
+	// TODO determine that cancel has occurred
+	else if (Error.IsEmpty())
+	{
+		UFacebookLoginComponent::FacebookLoginCancelledDelegate.Broadcast();
+	}
+	else
+	{
+		UFacebookLoginComponent::FacebookLoginSucceededDelegate.Broadcast(UFacebookFunctions::FacebookGetUserId(), UFacebookFunctions::FacebookGetAccessToken(), UFacebookFunctions::FacebookGetAccessTokenExpirationDate());
+	}
+}
+
 
 void UFacebookLoginComponent::OnRegister()
 {
