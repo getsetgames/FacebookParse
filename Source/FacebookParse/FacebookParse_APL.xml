@@ -87,7 +87,10 @@ public void AndroidThunk_Java_FacebookLoginWithReadPermissions(String permission
 	LoginManager.getInstance().logInWithReadPermissions(this, p);
 }
 
-public native void nativeFacebookOnLoginComplete(boolean bSuccess, String token, String userId, String userName, String error);
+public native void nativeFacebookOnLoginComplete(String error);
+public native void nativeFacebookOnLoginCancelled();
+private native void nativeFacebookOnLoginError();
+
 
 		]]></insert>
 	</gameActivityClassAdditions>
@@ -111,21 +114,21 @@ LoginManager.getInstance().registerCallback(callbackManager,
 	    @Override
 	    public void onSuccess(LoginResult loginResult) 
 	    {
-	    	nativeFacebookOnLoginComplete(true, "", "", "", "Facebook Login Cancel");
+	    	nativeFacebookOnLoginComplete();
 	        Log.debug("Successful Facebook login");
 	    }
 
 	    @Override
 	    public void onCancel() 
 	    {
-	    	nativeFacebookOnLoginComplete(false, "", "", "", "Facebook Login Cancel");
+	    	nativeFacebookOnLoginCancelled();
 	        Log.debug("Cancelled Facebook login");
 	    }
 
 	    @Override
 	    public void onError(FacebookException exception) 
 	    {
-			nativeFacebookOnLoginComplete(false, "", "", "", exception.toString());
+			nativeFacebookOnLoginError(exception.toString());
 			Log.debug("Error on Facebook login");
 		}
     });
