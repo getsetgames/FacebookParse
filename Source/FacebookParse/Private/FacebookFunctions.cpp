@@ -58,6 +58,17 @@ FString UFacebookFunctions::FacebookGetAccessTokenExpirationDate()
 
 	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
 	{
+		static jmethodID Method = FJavaWrapper::FindMethod(Env,
+			FJavaWrapper::GameActivityClassID,
+			"AndroidThunk_Java_FacebookGetAccessTokenExpirationDate",
+			"()Ljava/lang/String;",
+			false);
+		jstring ExpirationDate = (jstring)FJavaWrapper::CallObjectMethod(Env, FJavaWrapper::GameActivityThis, Method);
+
+		const char *s = Env->GetStringUTFChars(ExpirationDate, 0);
+		Result = FString(UTF8_TO_TCHAR(s));
+
+		Env->ReleaseStringUTFChars(ExpirationDate, s);
 	}
 #endif
 	
