@@ -23,6 +23,17 @@ FString UFacebookFunctions::FacebookGetAccessToken()
 
 	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
 	{
+		static jmethodID Method = FJavaWrapper::FindMethod(Env,
+			FJavaWrapper::GameActivityClassID,
+			"AndroidThunk_Java_FacebookGetAccessToken",
+			"()Ljava/lang/String;",
+			false);
+		jstring AccessToken = (jstring)FJavaWrapper::CallObjectMethod(Env, FJavaWrapper::GameActivityThis, Method);
+
+		const char *s = Env->GetStringUTFChars(AccessToken, 0);
+		Result = FString(UTF8_TO_TCHAR(s));
+
+		Env->ReleaseStringUTFChars(AccessToken, s);
 	}
 #endif
 	
