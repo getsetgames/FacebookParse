@@ -43,7 +43,7 @@ FString UFacebookFunctions::FacebookGetAccessToken()
 FString UFacebookFunctions::FacebookGetAccessTokenExpirationDate()
 {
 	FString Result;
-	
+
 #if PLATFORM_IOS
 	if ([FBSDKAccessToken currentAccessToken])
 	{
