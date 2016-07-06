@@ -103,9 +103,9 @@ public String AndroidThunk_Java_FacebookGetUserId()
 	return AccessToken.getCurrentAccessToken().getUserId();
 }
 
-public native void nativeFacebookOnLoginComplete(String error);
+public native void nativeFacebookOnLoginComplete();
 public native void nativeFacebookOnLoginCancelled();
-public native void nativeFacebookOnLoginError();
+public native void nativeFacebookOnLoginError(String error);
 
 		]]></insert>
 	</gameActivityClassAdditions>
