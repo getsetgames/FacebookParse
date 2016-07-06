@@ -88,6 +88,17 @@ FString UFacebookFunctions::FacebookGetUserId()
 
 	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
 	{
+		static jmethodID Method = FJavaWrapper::FindMethod(Env,
+			FJavaWrapper::GameActivityClassID,
+			"AndroidThunk_Java_FacebookGetUserId",
+			"()Ljava/lang/String;",
+			false);
+		jstring UserId = (jstring)FJavaWrapper::CallObjectMethod(Env, FJavaWrapper::GameActivityThis, Method);
+
+		const char *s = Env->GetStringUTFChars(UserId, 0);
+		Result = FString(UTF8_TO_TCHAR(s));
+
+		Env->ReleaseStringUTFChars(UserId, s);
 	}
 #endif
 	
