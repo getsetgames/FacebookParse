@@ -89,8 +89,7 @@ public void AndroidThunk_Java_FacebookLoginWithReadPermissions(String permission
 
 public native void nativeFacebookOnLoginComplete(String error);
 public native void nativeFacebookOnLoginCancelled();
-private native void nativeFacebookOnLoginError();
-
+public native void nativeFacebookOnLoginError();
 
 		]]></insert>
 	</gameActivityClassAdditions>
