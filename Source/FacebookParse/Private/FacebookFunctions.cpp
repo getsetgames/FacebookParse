@@ -5,6 +5,11 @@
 
 #include "FacebookParsePrivatePCH.h"
 
+#if PLATFORM_ANDROID
+#include "Android/AndroidJNI.h"
+#include "AndroidApplication.h"
+#endif
+
 FString UFacebookFunctions::FacebookGetAccessToken()
 {
 	FString Result;
@@ -14,6 +19,13 @@ FString UFacebookFunctions::FacebookGetAccessToken()
 	{
 		Result = FString([FBSDKAccessToken currentAccessToken].tokenString);
 	}
+#elif PLATFORM_ANDROID
+    static jmethodID Method = FJavaWrapper::FindMethod(Env,
+                                                       FJavaWrapper::GameActivityClassID,
+                                                       "AndroidThunk_Java_FacebookGetAccessToken",
+                                                       "()Ljava/lang/String;",
+                                                       false);
+    jstring AccessToken = FJavaWrapper::CallObjectMethod(Env, FJavaWrapper::GameActivityThis, Method, nil);
 #endif
 	
 	return Result;
@@ -33,6 +45,15 @@ FString UFacebookFunctions::FacebookGetAccessTokenExpirationDate()
 		
 		Result = FString([dateFormatter stringFromDate:[FBSDKAccessToken currentAccessToken].expirationDate]);
 	}
+#elif PLATFORM_ANDROID
+    
+    static jmethodID Method = FJavaWrapper::FindMethod(Env,
+                                                       FJavaWrapper::GameActivityClassID,
+                                                       "AndroidThunk_Java_FacebookGetAccessTokenExpirationDate",
+                                                       "()Ljava/lang/String;",
+                                                       false);
+    jstring ExpirationDate = FJavaWrapper::CallObjectMethod(Env, FJavaWrapper::GameActivityThis, Method, nil);
+    
 #endif
 	
 	return Result;
@@ -47,6 +68,14 @@ FString UFacebookFunctions::FacebookGetUserId()
 	{
 		Result = FString([FBSDKAccessToken currentAccessToken].userID);
 	}
+#elif PLATFORM_ANDROID
+    static jmethodID Method = FJavaWrapper::FindMethod(Env,
+                                                       FJavaWrapper::GameActivityClassID,
+                                                       "AndroidThunk_Java_FacebookGetUserId",
+                                                       "()Ljava/lang/String;",
+                                                       false);
+    jstring UserId = FJavaWrapper::CallObjectMethod(Env, FJavaWrapper::GameActivityThis, Method, nil);
+    
 #endif
 	
 	return Result;

@@ -87,6 +87,21 @@ public void AndroidThunk_Java_FacebookLoginWithReadPermissions(String permission
 	LoginManager.getInstance().logInWithReadPermissions(this, p);
 }
 
+public String AndroidThunk_Java_FacebookGetAccessToken()
+{
+	return AccessToken.getCurrentAccessToken();
+}
+
+public String AndroidThunk_Java_FacebookGetAccessTokenExpirationDate()
+{
+	return AccessToken.getCurrentAccessToken().getExpires().toString();
+}
+
+public String AndroidThunk_Java_FacebookGetUserId()
+{
+	return AccessToken.getCurrentAccessToken().getUserId();
+}
+
 public native void nativeFacebookOnLoginComplete(String error);
 public native void nativeFacebookOnLoginCancelled();
 public native void nativeFacebookOnLoginError();
