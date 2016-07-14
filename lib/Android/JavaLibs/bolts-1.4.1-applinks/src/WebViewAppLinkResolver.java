@@ -125,7 +125,7 @@ public class WebViewAppLinkResolver implements AppLinkResolver {
       @Override
       public Task<JSONArray> then(Task<Void> task) throws Exception {
         // Load the content in a WebView and use JavaScript to extract the meta tags.
-        final TaskCompletionSource<JSONArray> tcs = new TaskCompletionSource<>();
+        final TaskCompletionSource<JSONArray> tcs = new TaskCompletionSource<JSONArray>();
         final WebView webView = new WebView(context);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setNetworkAvailable(false);
