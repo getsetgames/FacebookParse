@@ -52,7 +52,6 @@
 	<!-- optional files or directories to copy to Intermediate/Android/APK -->
  	<prebuildCopies>
 		<copyDir src="$S(EngineDir)/Plugins/GSG/FacebookParse/lib/Android/JavaLibs" dst="$S(BuildDir)/JavaLibs" />
-		<copyDir src="$S(EngineDir)/Plugins/GSG/FacebookParse/lib/Android/libs" dst="$S(BuildDir)/libs" />
 	</prebuildCopies>
 
 	<resourceCopies>
