@@ -46,7 +46,6 @@
 	<!-- optional additions to proguard -->
 	<proguardAdditions>
 		<insert>
--keepattributes Signature
 		</insert>
 	</proguardAdditions>
 	
