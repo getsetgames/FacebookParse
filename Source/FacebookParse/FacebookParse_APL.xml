@@ -58,7 +58,7 @@
 
 	<resourceCopies>
 		<!-- Copy the generated resource file to be packaged -->
-		<copyFile src="$S(EngineDir)/Plugins/GSG/FacebookParse/lib/Android/res/values/FacebookAppID.generated.xml" dst="$S(BuildDir)/res/values/FacebookAppID.xml" />
+		<copyFile src="$S(PluginDir)/../../lib/Android/res/values/FacebookAppID.generated.xml" dst="$S(BuildDir)/res/values/FacebookAppID.xml" />
 	</resourceCopies>
 
 	<!-- optional additions to the GameActivity imports in GameActivity.java -->
