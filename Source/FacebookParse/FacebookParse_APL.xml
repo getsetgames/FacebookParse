@@ -6,11 +6,12 @@
 		<log text="FacebookParse init"/>
 
 		<setStringFromProperty result="sFacebookAppId" ini="Engine" section="/Script/FacebookParse.FacebookParseSettings" property="FBID" default=""/>
+		<setStringFromFile     result="sFacebookAppIdResourceFile" value="$S(PluginDir)/../../lib/Android/res/values/FacebookAppID.xml"/>
 
 		<!-- create string resource file containging Facebook application ID  -->
 		<setStringReplace resultFile="$S(PluginDir)/../../lib/Android/res/values/FacebookAppID.generated.xml" 
 							  result="sFacebookAppIdResourceFile" 
-					      sourceFile="$S(PluginDir)/../../lib/Android/res/values/FacebookAppID.xml"
+					      	  source="$S(sFacebookAppIdResourceFile)"
 					            find="$${fb-id}$$" 
 					            with="$S(sFacebookAppId)" 
 					         default=""/>
