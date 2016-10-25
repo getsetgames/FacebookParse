@@ -92,7 +92,7 @@ public void AndroidThunk_Java_FacebookLoginWithReadPermissions(String permission
 
 public String AndroidThunk_Java_FacebookGetAccessToken()
 {
-	return AccessToken.getCurrentAccessToken().toString();
+	return AccessToken.getCurrentAccessToken().getToken();
 }
 
 public String AndroidThunk_Java_FacebookGetAccessTokenExpirationDate()
