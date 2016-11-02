@@ -27,12 +27,15 @@ NSArray* GetNSStringArray(TArray<FString> FStringArray)
 
 extern "C" void Java_com_epicgames_ue4_GameActivity_nativeFacebookOnLoginComplete(JNIEnv* jenv, jobject thiz)
 {
-    UFacebookLoginComponent::FacebookLoginSucceededDelegate.Broadcast
-    (
-        UFacebookFunctions::FacebookGetUserId(),
-        UFacebookFunctions::FacebookGetAccessToken(),
-        UFacebookFunctions::FacebookGetAccessTokenExpirationDate()
-    );
+	FGraphEventRef EnterBackgroundTask = FFunctionGraphTask::CreateAndDispatchWhenReady([&]()
+	{
+		UFacebookLoginComponent::FacebookLoginSucceededDelegate.Broadcast
+		(
+		 UFacebookFunctions::FacebookGetUserId(),
+		 UFacebookFunctions::FacebookGetAccessToken(),
+		 UFacebookFunctions::FacebookGetAccessTokenExpirationDate()
+		 );
+	}, TStatId(), NULL, ENamedThreads::GameThread);
 }
 
 extern "C" void Java_com_epicgames_ue4_GameActivity_nativeFacebookOnLoginCancelled(JNIEnv* jenv, jobject thiz)
