@@ -43,13 +43,7 @@ public:
 private:
 	void ApplicationOpenURL_Handler(FString URL, FString SourceApplication);
 	
-	void FacebookLoginSucceeded_Handler(FString UserId, FString AccessToken, FString TokenExpirationDate)
-	{
-		FGraphEventRef EnterBackgroundTask = FFunctionGraphTask::CreateAndDispatchWhenReady([&]()
-		{
-			FacebookLoginSucceeded.Broadcast(UserId, AccessToken, TokenExpirationDate);
-		}, TStatId(), NULL, ENamedThreads::GameThread);
-	}
+	void FacebookLoginSucceeded_Handler(FString UserId, FString AccessToken, FString TokenExpirationDate) { FacebookLoginSucceeded.Broadcast(UserId, AccessToken, TokenExpirationDate); }
 	void FacebookLoginCancelled_Handler() { FacebookLoginCancelled.Broadcast(); }
 	void FacebookLoginError_Handler(FString Error) { FacebookLoginError.Broadcast(Error); }
 
