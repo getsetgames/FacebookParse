@@ -96,7 +96,15 @@ void UFacebookLoginComponent::FacebookLoginWithReadPermissions(TArray<FString> P
 			}
 			else
 			{
-				UFacebookLoginComponent::FacebookLoginSucceededDelegate.Broadcast(UFacebookFunctions::FacebookGetUserId(), UFacebookFunctions::FacebookGetAccessToken(), UFacebookFunctions::FacebookGetAccessTokenExpirationDate());
+				FGraphEventRef EnterBackgroundTask = FFunctionGraphTask::CreateAndDispatchWhenReady([&]()
+				{
+					UFacebookLoginComponent::FacebookLoginSucceededDelegate.Broadcast
+					(
+					 UFacebookFunctions::FacebookGetUserId(),
+					 UFacebookFunctions::FacebookGetAccessToken(),
+					 UFacebookFunctions::FacebookGetAccessTokenExpirationDate()
+					 );
+				}, TStatId(), NULL, ENamedThreads::GameThread);
 			}
 		 }];
 	});
