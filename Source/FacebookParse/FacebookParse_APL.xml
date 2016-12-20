@@ -86,7 +86,7 @@ CallbackManager callbackManager;
 
 public void AndroidThunk_Java_FacebookLoginWithReadPermissions(String permissions)
 {
-	HashSet<String> p = new HashSet(Arrays.asList(TextUtils.split(permissions, ",")));
+	HashSet<String> p = new HashSet<String>(Arrays.asList(TextUtils.split(permissions, ",")));
 	LoginManager.getInstance().logInWithReadPermissions(this, p);
 }
 
