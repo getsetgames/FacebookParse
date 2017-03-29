@@ -90,6 +90,13 @@ public void AndroidThunk_Java_FacebookLoginWithReadPermissions(String permission
 	LoginManager.getInstance().logInWithReadPermissions(this, p);
 }
 
+public void AndroidThunk_Java_FacebookLogout()
+{
+	if (AccessToken.getCurrentAccessToken() != null) {
+		LoginManager.getInstance().logOut();
+	}
+}
+
 public String AndroidThunk_Java_FacebookGetAccessToken()
 {
 	return AccessToken.getCurrentAccessToken().getToken();

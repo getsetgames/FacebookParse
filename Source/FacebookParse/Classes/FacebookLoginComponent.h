@@ -19,6 +19,9 @@ public:
 	UFUNCTION(BlueprintCallable, meta = (Keywords = "facebook"), Category = "Facebook")
 	static void FacebookLoginWithReadPermissions(TArray<FString> Permissions);
 	
+	UFUNCTION(BlueprintCallable, meta = (Keywords = "facebook"), Category = "Facebook")
+	static void FacebookLogout();
+	
 	DECLARE_MULTICAST_DELEGATE_ThreeParams(FFacebookLoginSucceededDelegate, FString, FString, FString);
 	DECLARE_MULTICAST_DELEGATE(FFacebookLoginCancelledDelegate);
 	DECLARE_MULTICAST_DELEGATE_OneParam(FFacebookLoginErrorDelegate, FString);

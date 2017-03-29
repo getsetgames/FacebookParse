@@ -138,6 +138,30 @@ void UFacebookLoginComponent::FacebookLoginWithReadPermissions(TArray<FString> P
 #endif
 }
 
+void UFacebookLoginComponent::FacebookLogout()
+{
+#if PLATFORM_IOS
+	dispatch_async(dispatch_get_main_queue(),^{
+		if ([FBSDKAccessToken currentAccessToken])
+		{
+			FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+			[loginManager logOut];
+		}
+	});
+#elif PLATFORM_ANDROID
+	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
+	{
+		static jmethodID Method = FJavaWrapper::FindMethod(Env,
+														   FJavaWrapper::GameActivityClassID,
+														   "AndroidThunk_Java_FacebookLogout",
+														   "()V",
+														   false);
+		FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, Method);
+	}
+
+#endif
+}
+
 void UFacebookLoginComponent::ApplicationOpenURL_Handler(FString URL, FString SourceApplication)
 {
 #if PLATFORM_IOS
