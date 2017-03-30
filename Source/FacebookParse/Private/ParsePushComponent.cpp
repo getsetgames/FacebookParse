@@ -3,6 +3,7 @@
 //  Copyright (c) 2015 Get Set Games Inc. All rights reserved.
 //
 
+#include "ParsePushComponent.h"
 #include "FacebookParsePrivatePCH.h"
 #include "CallbackDevice.h"
 

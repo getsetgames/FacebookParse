@@ -3,8 +3,8 @@
 //  Copyright (c) 2015 Get Set Games Inc. All rights reserved.
 //
 
-#include "FacebookParsePrivatePCH.h"
 #include "FacebookParseSettings.h"
+#include "FacebookParsePrivatePCH.h"
 
 UFacebookParseSettings::UFacebookParseSettings(const FObjectInitializer& ObjectInitializer)
 : Super(ObjectInitializer)

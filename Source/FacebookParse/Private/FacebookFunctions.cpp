@@ -3,6 +3,7 @@
 //  Copyright (c) 2015 Get Set Games Inc. All rights reserved.
 //
 
+#include "FacebookFunctions.h"
 #include "FacebookParsePrivatePCH.h"
 
 #if PLATFORM_ANDROID
