@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include "Components/ActorComponent.h"
 #include "FacebookLoginComponent.generated.h"
 
 UCLASS(ClassGroup=Facebook, HideCategories=(Activation, "Components|Activation", Collision), meta=(BlueprintSpawnableComponent))

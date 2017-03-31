@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include "Components/ActorComponent.h"
 #include "ParsePushComponent.generated.h"
 
 UCLASS(ClassGroup=Parse, HideCategories=(Activation, "Components|Activation", Collision), meta=(BlueprintSpawnableComponent))
