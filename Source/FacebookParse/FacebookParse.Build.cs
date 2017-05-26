@@ -9,7 +9,7 @@ namespace UnrealBuildTool.Rules
 {
 	public class FacebookParse : ModuleRules
 	{
-		public FacebookParse(TargetInfo Target)
+		public FacebookParse(ReadOnlyTargetRules Target) : base(Target)
 		{
 			PublicIncludePaths.AddRange(
 				new string[] {
